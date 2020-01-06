@@ -1,0 +1,12 @@
+<li [ngClass]="{'list-group-item': true,
+'list-group-item-success': appareil.status=== 'allumé',
+'list-group-item-danger': appareil.status === 'éteint'}">
+  <h4 [ngStyle]="{color: getColor()}">Appareil : {{appareil.name}} -- Status : {{ getStatus() }}</h4>
+  <a [routerLink]="[appareil.id]">Détails</a>
+  <input type="text" class="form-control mb-2" [(ngModel)]="appareil.name">
+  <button [ngClass]="{'btn': true, 'btn-sm': true, 'btn-success': appareil.status === 'éteint', 'btn-danger': appareil.status === 'allumé'}" (click)="onSwitch()">
+    <p *ngIf="appareil.status === 'éteint'" class="m-0">Allumer</p>
+    <p *ngIf="appareil.status === 'allumé'" class="m-0">Éteindre</p>
+
+  </button>
+</li>
